@@ -16,8 +16,6 @@ function Chat() {
             db.collection('rooms').doc(roomId).onSnapshot((snapShot)=>(setRoomDetails(snapShot.data())))
         }
 
-        db.collection('rooms').doc(roomId).collection('messages').orderBy('timestamp','asc').onSnapshot((snapShot) => (setRoomMessages(snapShot.docs.map((doc)=> doc.data()))));
-
     },[roomId]);
     useEffect(()=>{
         if(roomId){
